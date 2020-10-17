@@ -10,9 +10,17 @@ import Navbar from './components/Navbar/navbar';
 // PAGE IMPORTS
 import HomePage from './pages/HomePage/HomePage';
 import AuthenticationPage from './pages/AuthenticationPage/AuthenticationPage';
+// REDUX IMPORTS
+import { store } from "./store";
+import { loadUser } from "./actions/authActions";
+// AXIOS IMPORT
+import axios from 'axios';
+axios.defaults.baseURL = process.env.REACT_APP_BACKEND;
 
 class App extends Component {
-
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
   render() {
     return (
       <div className='App'>

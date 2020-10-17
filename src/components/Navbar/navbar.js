@@ -53,9 +53,9 @@ class Navbar extends Component {
                                 </li>
                             </Link>
                             :
-                            <Link to="/" className="linkElement" onClick={store.dispatch({ type: "LOGOUT_SUCCESS" })}>
+                            <Link to="/" className="linkElement" onClick={()=>{store.dispatch({ type: "LOGOUT_SUCCESS" })}}>
                             <li className="liElement">
-                                <div className="divElement" onClick={store.dispatch({ type: "LOGOUT_SUCCESS" })}>
+                                <div className="divElement">
                                     Logout
                                     </div>
                             </li>

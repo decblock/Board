@@ -1,4 +1,4 @@
-// REGISTRATION PAGE
+// AUTHENTICATION PAGE
 
 // REACT IMPORTS
 import React, { Component } from 'react';
@@ -7,8 +7,17 @@ import Login from '../../components/Login/Login';
 import Register from '../../components/Register/Register'
 // STYLESHEET
 import './AuthenticationPage.css';
+// REDUX IMPORTS
+import {connect} from 'react-redux';
 
-class RegistrationPage extends Component {
+class AuthenticationPage extends Component {
+
+    componentDidUpdate() {
+        if (this.props.isAuthenticated) {
+            console.log("AUTHENTICATED")
+            window.location.replace('/');
+        }
+    }
 
     render() {
         return (
@@ -21,4 +30,10 @@ class RegistrationPage extends Component {
 
 }
 
-export default RegistrationPage;
+
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated,
+    error: state.error
+});
+
+export default connect(mapStateToProps)(AuthenticationPage);

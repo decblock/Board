@@ -4,11 +4,20 @@
 import React, { Component } from 'react';
 // STYLESHEET
 import './Login.css'
+// REDUX IMPORTS
+import {connect} from 'react-redux';
+import {login} from '../../actions/authActions';
 
 class Login extends Component {
 
     handleLogin = (e) => {
         e.preventDefault();
+        const { email, password } = e.target.elements;
+        const user = {
+          email: `${email.value}`,
+          password: `${password.value}`,
+        };
+        this.props.login(user);
     }
 
     render() {
@@ -42,4 +51,9 @@ class Login extends Component {
 
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  error: state.error
+});
+
+export default connect(mapStateToProps, { login })(Login);

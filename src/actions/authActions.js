@@ -1,5 +1,4 @@
 import axios from "axios";
-import { returnErrors } from "./errorActions";
 import {
   USER_LOADED,
   USER_LOADING,
@@ -25,6 +24,7 @@ export const loadUser = () => (dispatch, getState) => {
     })
     .catch((err) => {
       // dispatch(returnErrors(err.response.data, err.response.status));
+      alert(err.response.data)
       dispatch({
         type: AUTH_ERROR,
       });
@@ -33,7 +33,7 @@ export const loadUser = () => (dispatch, getState) => {
 
 // REGISTER USER
 export const register = (newUser) => (dispatch) => {
-  axios.post("/user/new", newUser)
+  axios.post("/user/register", newUser)
     .then((response) => {
       alert("REGISTRATION SUCCESS");
       dispatch({
@@ -52,7 +52,7 @@ export const register = (newUser) => (dispatch) => {
 
 // LOGIN USER
 export const login = (user) => (dispatch) => {
-  axios.post("user/existing", user)
+  axios.post("user/login", user)
     .then((response) => {
       dispatch({
         type: LOGIN_SUCCESS,
