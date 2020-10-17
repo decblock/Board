@@ -43,10 +43,10 @@ class Navbar extends Component {
                                 </div>
                             </li>
                         </Link>
-                        <Link to="/" className="linkElement">
+                        <Link to="/auth" className="linkElement">
                             <li className="liElement">
                                 <div className="divElement">
-                                    Login
+                                    Login/Register
                                 </div>
                             </li>
                         </Link>

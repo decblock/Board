@@ -6,6 +6,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0px 0px 5px grey;
     /* border-bottom: 2px solid rgb(53, 53, 170); */
     /* background-color: antiquewhite  ; */
 }

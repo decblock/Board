@@ -6,9 +6,10 @@ import React, { Component } from 'react'
 // ROUTER IMPORTS
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 // NAVBAR IMPORT
-import Navbar from './components/Navbar/navbar'
+import Navbar from './components/Navbar/navbar';
 // PAGE IMPORTS
 import HomePage from './pages/HomePage/HomePage';
+import AuthenticationPage from './pages/AuthenticationPage/AuthenticationPage';
 
 class App extends Component {
 
@@ -18,7 +19,7 @@ class App extends Component {
         <Router>
           <Navbar />
           <Route exact path='/' component={HomePage} />
-          {/* <Route exact path='/' component={} /> */}
+          <Route exact path='/auth' component={AuthenticationPage} />
           {/* <Route exact path='/' component={} /> */}
         </Router>
       </div>
