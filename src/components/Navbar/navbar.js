@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 // ROUTER IMPORTS
 import { Link } from 'react-router-dom';
 // REDUX IMPORTS
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { store } from '../../store';
 // STYLESHEET
 import './navbar.css'
 // BANNER IMPORT
@@ -17,7 +18,7 @@ class Navbar extends Component {
             <nav className="nav" variant="tabs">
                 <h1>
                     <Link to="/" className="linkElement">
-                        <img src={logo} style={{'height': '5vh'}} />
+                        <img src={logo} style={{ 'height': '5vh' }} />
                     </Link>
                 </h1>
                 <div className="navDiv">
@@ -43,13 +44,23 @@ class Navbar extends Component {
                                 </div>
                             </li>
                         </Link>
-                        <Link to="/auth" className="linkElement">
-                            <li className="liElement">
-                                <div className="divElement">
-                                    Login/Register
+                        {!this.props.isAuthenticated
+                            ? <Link to="/auth" className="linkElement">
+                                <li className="liElement">
+                                    <div className="divElement">
+                                        Login/Register
                                 </div>
+                                </li>
+                            </Link>
+                            :
+                            <Link to="/" className="linkElement" onClick={store.dispatch({ type: "LOGOUT_SUCCESS" })}>
+                            <li className="liElement">
+                                <div className="divElement" onClick={store.dispatch({ type: "LOGOUT_SUCCESS" })}>
+                                    Logout
+                                    </div>
                             </li>
-                        </Link>
+                            </Link>
+                        }
                     </ul>
                 </div>
             </nav>
@@ -57,12 +68,10 @@ class Navbar extends Component {
     }
 }
 
-// function mapStateToProps(state) {
-//     return ({
-//         isAuthenticated: state.auth.isAuthenticated,
-//     })
-// }
+function mapStateToProps(state) {
+    return ({
+        isAuthenticated: state.auth.isAuthenticated,
+    })
+}
 
-// export default connect(mapStateToProps)(Navbar);
-
-export default Navbar;
+export default connect(mapStateToProps)(Navbar);
