@@ -47,7 +47,6 @@ class Dashboard extends Component {
         return (
             <div className='DashMain'>
                 <SideNav />
-                DASHBOARD
                 {this.renderComponent(this.state.tab)}
             </div>
         );
