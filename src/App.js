@@ -5,11 +5,13 @@
 import React, { Component } from 'react'
 // ROUTER IMPORTS
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 // NAVBAR IMPORT
 import Navbar from './components/Navbar/navbar';
 // PAGE IMPORTS
 import HomePage from './pages/HomePage/HomePage';
 import AuthenticationPage from './pages/AuthenticationPage/AuthenticationPage';
+import Dashboard from './pages/Dashboard/Dashboard';
 // REDUX IMPORTS
 import { store } from "./store";
 import { loadUser } from "./actions/authActions";
@@ -28,7 +30,7 @@ class App extends Component {
           <Navbar />
           <Route exact path='/' component={HomePage} />
           <Route exact path='/auth' component={AuthenticationPage} />
-          {/* <Route exact path='/' component={} /> */}
+          <PrivateRoute exact path='/dashboard' component={Dashboard} />
         </Router>
       </div>
     );

@@ -37,7 +37,7 @@ class Navbar extends Component {
                                 </div>
                             </li>
                         </Link>
-                        <Link to="/" className="linkElement">
+                        <Link to="/dashboard" className="linkElement">
                             <li className="liElement">
                                 <div className="divElement">
                                     Dashboard
