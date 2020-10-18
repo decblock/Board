@@ -6,6 +6,14 @@ import React, { Component } from 'react';
 import './Renewable.css'
 // RECHART IMPORTS
 import { PieChart, Pie, Cell, Legend, BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts'
+// AXIOS IMPORTS
+import axios from 'axios'
+// MATERIAL UI IMPORTS
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 const COLORS = ['grey', 'white']
 
@@ -14,36 +22,48 @@ class Renewable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cumulative_power_generation: 21587,
-            facility_capacity: 18.57,
-            co2_reduction: 10587,
-            drinking_water_effect: 1610587,
-            current_output: 15.57,
+            type: 'solar',
+            renewable: {},
+            cumulative_power_generation: 0,
+            facility_capacity: 0,
+            co2_reduction: 0,
+            drinking_water_effect: 0,
+            current_output: 0,
             weekly_power_generation: {
-                1: 270,
-                2: 240,
-                3: 245,
-                4: 255,
-                5: 260,
-                6: 265,
-                7: 150
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0
             },
             monthly_power_generation: {
-                1: 4158978,
-                2: 4452549,
-                3: 5092485,
-                4: 5324586,
-                5: 6029583,
-                6: 6585995,
-                7: 7053417,
-                8: 7565421,
-                9: 6835835,
-                10: 5953224,
-                11: 5023148,
-                12: 4268755
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0,
+                11: 0,
+                12: 0
             }
 
         }
+    }
+
+    async componentDidMount() {
+        await axios.get('/renewable/')
+            .then((res) => {
+                this.setState({
+                    renewable: res.data,
+                    ...res.data.solar
+                })
+            })
     }
 
     getCOData = () => {
@@ -150,6 +170,15 @@ class Renewable extends Component {
         return data;
     }
 
+    handleTypeChange = (e, val) => {
+        e.preventDefault();
+        this.setState({
+            type: val,
+            renewable: this.state.renewable,
+            ...this.state.renewable[val]
+        })
+    }
+
     render() {
         return (
             <div className="renewableMain">
@@ -158,6 +187,13 @@ class Renewable extends Component {
                         Renewable Energy Dashboard
                     </h1>
                 </center>
+                <FormControl component="fieldset">
+                    {/* <FormLabel component="legend">Gender</FormLabel> */}
+                    <RadioGroup row={true} aria-label="type" name="renewabletype" value={this.state.type} onChange={this.handleTypeChange}>
+                        <FormControlLabel value="solar" control={<Radio style={{ 'color': 'white', '&$checked': { 'color': 'white' } }} />} label="Solar" />
+                        <FormControlLabel value="wind" control={<Radio style={{ 'color': 'white', '&$checked': { 'color': 'white' } }} />} label="Wind" />
+                    </RadioGroup>
+                </FormControl>
                 <table className='detailsTable'>
                     <tr>
                         <th>

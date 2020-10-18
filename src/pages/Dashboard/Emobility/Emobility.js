@@ -3,9 +3,11 @@
 // REACT IMPORTS
 import React, { Component } from 'react';
 // STYLESHEET
-import './Emobility.css'
+import './Emobility.css';
 // RECHART IMPORTS
-import { PieChart, Pie, Cell, Legend, BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts'
+import { PieChart, Pie, Cell, Legend, BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts';
+// AXIOS IMPORTS
+import axios from 'axios';
 
 const COLORS = ['white', 'grey']
 
@@ -14,18 +16,30 @@ class Emobility extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cumulative_ride: 282584,
-            electric_vehical_shared: 2589,
-            parking_are_reduction: 5894,
-            renewable_energy_consumption: 1.24,
-            traffic_sharing_rate: 20,
-            greego: 29745,
-            drt: 12897,
-            twizy: 15452,
-            un1: 38524,
-            un2: 23854,
-            un3: 22845
+            cumulative_ride: 0,
+            electric_vehical_shared: 0,
+            parking_are_reduction: 0,
+            renewable_energy_consumption: 0,
+            traffic_sharing_rate: 0,
+            greego: 0,
+            drt: 0,
+            twizy: 0,
+            un1: 0,
+            un2: 0,
+            un3: 0
         }
+    }
+
+    async componentDidMount() {
+        await axios.get('/emobility/')
+            .then((res) => {
+                this.setState({
+                    ...res.data
+                })
+            })
+            .catch((err) => {
+
+            })
     }
 
     getTSData = () => {
@@ -110,7 +124,7 @@ class Emobility extends Component {
                                         this.getTSData().map((entry, index) => <Cell fill={COLORS[index % COLORS.length]} />)
                                     }
                                 </Pie>
-                                <text x={100} y={100} dy={10} textAnchor="middle" fill='white'>{this.state.current_output}</text>
+                                <text x={100} y={100} dy={10} textAnchor="middle" fill='white'>{this.state.traffic_sharing_rate}%</text>
                                 <Legend />
                             </PieChart>
                         </td>

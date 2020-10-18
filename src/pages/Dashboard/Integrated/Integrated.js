@@ -4,6 +4,8 @@
 import React, { Component } from 'react';
 // STYLESHEET
 import './Integrated.css'
+// AXIOS IMPORTS
+import axios from 'axios'
 
 class Integrated extends Component {
 
@@ -11,27 +13,46 @@ class Integrated extends Component {
         super(props);
         this.state = {
             renewable: {
-                cumulative_power_generation: 123,
-                total_facility_capacity: 12345,
-                co2_reduction: 12,
-                drinking_water_effect: 12345,
-                number_of_chargers_installed: 1234,
-                electricity_extraction_volume: 1234567
+                cumulative_power_generation: 0,
+                total_facility_capacity: 0,
+                co2_reduction: 0,
+                drinking_water_effect: 0,
+                number_of_chargers_installed: 0,
+                electricity_extraction_volume: 0
             },
             emobility: {
-                members: 123,
-                cumulative_ride: 345,
-                electric_vehical_shared: 56543,
-                ecar_available: 345,
-                ecar_unusable: 654,
-                ecar_charging: 234,
-                ecar_total: 24324,
-                ekickboard_available: 25252,
-                ekickboard_unusable: 23542352,
-                ekickboard_charging: 52345,
-                ekickboard_total: 23524524542
+                members: 0,
+                cumulative_ride: 0,
+                electric_vehical_shared: 0,
+                ecar_available: 0,
+                ecar_unusable: 0,
+                ecar_charging: 0,
+                ecar_total: 0,
+                ekickboard_available: 0,
+                ekickboard_unusable: 0,
+                ekickboard_charging: 0,
+                ekickboard_total: 0
             }
         }
+    }
+
+    async componentDidMount() {
+        await axios.get('/renewable/integrated')
+            .then((res) => {
+                console.log("RENEWABLE: " + JSON.stringify(res.data))
+                this.setState({ renewable: res.data });
+            })
+            .catch((err) => {
+                alert(err);
+            })
+        await axios.get('/emobility/integrated')
+            .then((res) => {
+                console.log("EMOBILITY: " + JSON.stringify(res.data))
+                this.setState({ emobility: res.data });
+            })
+            .catch((err) => {
+                alert(err);
+            })
     }
 
     render() {
@@ -112,7 +133,7 @@ class Integrated extends Component {
                                     Members
                                 </th>
                                 <th>
-                                    Commulative number <br/> of boarding
+                                    Commulative number <br /> of boarding
                                 </th>
                                 <th>
                                     Number of shared EV's
