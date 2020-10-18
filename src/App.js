@@ -30,7 +30,7 @@ class App extends Component {
           <Navbar />
           <Route exact path='/' component={HomePage} />
           <Route exact path='/auth' component={AuthenticationPage} />
-          <PrivateRoute exact path='/dashboard' component={Dashboard} />
+          <PrivateRoute exact path='/dashboard/:tab' component={Dashboard} />
         </Router>
       </div>
     );
