@@ -24,7 +24,12 @@ export const loadUser = () => (dispatch, getState) => {
     })
     .catch((err) => {
       // dispatch(returnErrors(err.response.data, err.response.status));
-      alert(err.response.data)
+      if (!err.response) {
+        alert(err);
+      }
+      else {
+        alert(err.response.data)
+      }
       dispatch({
         type: AUTH_ERROR,
       });
@@ -42,7 +47,12 @@ export const register = (newUser) => (dispatch) => {
       })
     })
     .catch((err) => {
-      alert(err.response.data)
+      if (!err.response) {
+        alert(err);
+      }
+      else {
+        alert(err.response.data)
+      }
       // dispatch(returnErrors(err.response.data, err.response.status, "REGISTER_FAIL"));
       dispatch({
         type: REGISTER_FAIL,
@@ -60,7 +70,12 @@ export const login = (user) => (dispatch) => {
       })
     })
     .catch((err) => {
-      alert(err.response.data)
+      if (!err.response) {
+        alert(err);
+      }
+      else {
+        alert(err.response.data)
+      }
       // dispatch(returnErrors(err.response.data, err.response.status, "LOGIN_FAIL"));
       dispatch({
         type: LOGIN_FAIL,
