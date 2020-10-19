@@ -13,6 +13,8 @@ import smarthub from '../../../assets/images/map/smart_hub.png'
 import smartshelter from '../../../assets/images/map/smart_shelter.png'
 import windsolar from '../../../assets/images/map/wind_solar.png'
 import drt from '../../../assets/images/map/drt.png'
+// RECHART IMPORTS
+import { BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts'
 
 const icons = {
     'solar': solar,
@@ -33,6 +35,16 @@ class Insights extends Component {
             latitude: 33.379657,
             longitude: 126.549879,
             zoom: 10
+        },
+        keyinsights: {
+            total_power_generation: 53897,
+            co2_reduction: 25054,
+            reduction_power_rate_previous_year: 52,
+            power_surplus_2019: 3678,
+            power_surplus_2020: 1754,
+            emobility_user: 143317,
+            renewable_enery_consuption: 1924,
+            monthly: [25, 32, 37, 45, 54, 62, 75, 80, 85, 86, 87, 88]
         },
         data: [
             {
@@ -94,10 +106,117 @@ class Insights extends Component {
         ]
     };
 
+    getMData = () => {
+        let data;
+        data = [
+            {
+                name: '1',
+                power: this.state.keyinsights.monthly[0]
+            },
+            {
+                name: '2',
+                power: this.state.keyinsights.monthly[1]
+            },
+            {
+                name: '3',
+                power: this.state.keyinsights.monthly[2]
+            },
+            {
+                name: '4',
+                power: this.state.keyinsights.monthly[3]
+            },
+            {
+                name: '5',
+                power: this.state.keyinsights.monthly[4]
+            },
+            {
+                name: '6',
+                power: this.state.keyinsights.monthly[5]
+            },
+            {
+                name: '7',
+                power: this.state.keyinsights.monthly[6]
+            },
+            {
+                name: '8',
+                power: this.state.keyinsights.monthly[7]
+            },
+            {
+                name: '9',
+                power: this.state.keyinsights.monthly[8]
+            },
+            {
+                name: '10',
+                power: this.state.keyinsights.monthly[9]
+            },
+            {
+                name: '11',
+                power: this.state.keyinsights.monthly[10]
+            },
+            {
+                name: '12',
+                power: this.state.keyinsights.monthly[11]
+            },
+        ]
+        return data;
+    }
+
     render() {
         return (
             <div className="InsightsMain">
                 <div className='map'>
+                    <div className='keyInsights'>
+                        <table>
+                            <tr>
+                                <th>Monthly surplus power reduction rate</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <BarChart width={300} height={100} data={this.getMData()}
+                                        margin={{ top: 5, right: 0, left: -35, bottom: -10 }}
+                                        barSize={10} >
+                                        <XAxis dataKey="name" stroke='grey' />
+                                        <YAxis stroke='grey' />
+                                        <Tooltip
+                                            labelStyle={{ 'color': 'black' }}
+                                            itemStyle={{ 'color': 'black' }}
+                                            contentStyle={{ 'opacity': '0.8' }} />
+                                        <Bar dataKey="power" fill="grey" animationDuration={1500} />
+                                    </BarChart>
+                                </td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <th>Total Power generation: </th>
+                                <td>{this.state.keyinsights.total_power_generation}</td>
+                            </tr>
+                            <tr>
+                                <th>CO2 Reduction: </th>
+                                <td>{this.state.keyinsights.co2_reduction}</td>
+                            </tr>
+                            <tr>
+                                <th>Reduction rate from previous year: </th>
+                                <td>{this.state.keyinsights.reduction_power_rate_previous_year}</td>
+                            </tr>
+                            <tr>
+                                <th>2019 surplus: </th>
+                                <td>{this.state.keyinsights.power_surplus_2019}</td>
+                            </tr>
+                            <tr>
+                                <th>2020 surplus: </th>
+                                <td>{this.state.keyinsights.power_surplus_2020}</td>
+                            </tr>
+                            <tr>
+                                <th>E-Mobility Users: </th>
+                                <td>{this.state.keyinsights.emobility_user}</td>
+                            </tr>
+                            <tr>
+                                <th>Renewable Energy Consumption: </th>
+                                <td>{this.state.keyinsights.renewable_enery_consuption}</td>
+                            </tr>
+                        </table>
+                    </div>
                     <ReactMapGL
                         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
                         mapStyle="mapbox://styles/akashsingh3/ckgg9xwo0e3hu1as44hohx983"
@@ -174,6 +293,49 @@ class Insights extends Component {
                             );
                         })} */}
                     </ReactMapGL>
+                    <div className='legendMain'>
+                        <table>
+                            <tr>
+                                <th colSpan='4'> <center>LEGEND</center></th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src={solar} height="50px"/>
+                                </td>
+                                <td>
+                                    Solar Power Complex
+                                </td>
+                                <td>
+                                    <img src={smarthub} height="50px"/>
+                                </td>
+                                <td>
+                                    Smart Hub
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src={wind} height="50px"/>
+                                </td>
+                                <td>
+                                    Wind Farm
+                                </td>
+                                <td>
+                                    <img src={smartshelter} height="50px"/>
+                                </td>
+                                <td>
+                                    Smart Shelter
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src={drt} height="50px"/>
+                                </td>
+                                <td>
+                                    Demand Responsive <br/> Shuttle Bus
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         );
