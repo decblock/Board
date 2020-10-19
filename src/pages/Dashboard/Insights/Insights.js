@@ -5,16 +5,18 @@ import React, { Component } from 'react';
 // MAPBOX IMPORTS
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 // STYLESHEET
-import './Insights.css'
+import './Insights.css';
 // IMAGE IMPORTS
-import solar from '../../../assets/images/map/solar.png'
-import wind from '../../../assets/images/map/wind.png'
-import smarthub from '../../../assets/images/map/smart_hub.png'
-import smartshelter from '../../../assets/images/map/smart_shelter.png'
-import windsolar from '../../../assets/images/map/wind_solar.png'
-import drt from '../../../assets/images/map/drt.png'
+import solar from '../../../assets/images/map/solar.png';
+import wind from '../../../assets/images/map/wind.png';
+import smarthub from '../../../assets/images/map/smart_hub.png';
+import smartshelter from '../../../assets/images/map/smart_shelter.png';
+import windsolar from '../../../assets/images/map/wind_solar.png';
+import drt from '../../../assets/images/map/drt.png';
 // RECHART IMPORTS
-import { BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts';
+// AXIOS IMPORTS
+import axios from 'axios';
 
 const icons = {
     'solar': solar,
@@ -27,84 +29,55 @@ const icons = {
 
 class Insights extends Component {
 
-    state = {
-        hoveritem: null,
-        viewport: {
-            width: '80vw',
-            height: '80vh',
-            latitude: 33.379657,
-            longitude: 126.549879,
-            zoom: 10
-        },
-        keyinsights: {
-            total_power_generation: 53897,
-            co2_reduction: 25054,
-            reduction_power_rate_previous_year: 52,
-            power_surplus_2019: 3678,
-            power_surplus_2020: 1754,
-            emobility_user: 143317,
-            renewable_enery_consuption: 1924,
-            monthly: [25, 32, 37, 45, 54, 62, 75, 80, 85, 86, 87, 88]
-        },
-        data: [
-            {
-                title: 'Smart Hub GS Jungmun Intersection',
-                type: 'smart_hub',
-                lat: 33.251292,
-                lng: 126.431457,
-                details: ['Detail-1', 'Detail-2', 'Detail-3']
+    constructor(props) {
+        super(props);
+        this.state = {
+            hoveritem: null,
+            viewport: {
+                width: '80vw',
+                height: '80vh',
+                latitude: 33.379657,
+                longitude: 126.549879,
+                zoom: 10
             },
-            {
-                title: 'Sinchang Wind Power Complex',
-                type: 'wind',
-                lat: 33.343849,
-                lng: 126.185533,
-                details: ['Detail-1', 'Detail-2', 'Detail-3']
+            keyinsights: {
+                total_power_generation: 0,
+                co2_reduction: 0,
+                reduction_power_rate_previous_year: 0,
+                power_surplus_2019: 0,
+                power_surplus_2020: 0,
+                emobility_user: 0,
+                renewable_enery_consuption: 0,
+                monthly: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             },
-            {
-                title: 'Smart Hub GS Seogwi Terminal',
-                type: 'smart_hub',
-                lat: 33.254219,
-                lng: 126.560119,
-                details: ['Detail-1', 'Detail-2', 'Detail-3']
-            },
-            {
-                title: 'Gashiri wind power and Gyotaeri solar power generation complex',
-                type: 'wind_solar',
-                lat: 33.421396,
-                lng: 126.685626,
-                details: ['Detail-1', 'Detail-2', 'Detail-3']
-            },
-            {
-                title: 'Haengwon wind and solar power generation complex',
-                type: 'wind_solar',
-                lat: 33.529681,
-                lng: 126.789599,
-                details: ['Detail-1', 'Detail-2', 'Detail-3']
-            },
-            {
-                title: 'Renewable Energy Promotion Center Smart Shelter',
-                type: 'smart_shelter',
-                lat: 33.465554,
-                lng: 126.933859,
-                details: ['Detail-1', 'Detail-2', 'Detail-3']
-            },
-            {
-                title: 'Solar power generation complex utilizing public facilities',
-                type: 'solar',
-                lat: 33.447039,
-                lng: 126.508976,
-                details: ['Detail-1', 'Detail-2', 'Detail-3']
-            },
-            {
-                title: 'Demand Response Shuttle Bus (DRT)',
-                type: 'drt',
-                lat: 33.408321,
-                lng: 126.266246,
-                details: ['Detail-1', 'Detail-2', 'Detail-3']
-            },
-        ]
-    };
+            data: []
+        };
+    }
+
+    componentDidMount() {
+        axios.get('/insight/')
+            .then((res) => {
+                this.setState({
+                    data: res.data
+                })
+            })
+            .catch((err) => {
+                alert(err);
+            });
+
+        axios.get('/insight/keyinsight/')
+            .then((res) => {
+                console.log('RESPONSE: ' + JSON.stringify(res.data))
+                this.setState({
+                    keyinsights: res.data
+                })
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }
+
+
 
     getMData = () => {
         let data;
@@ -181,7 +154,7 @@ class Insights extends Component {
                                             labelStyle={{ 'color': 'black' }}
                                             itemStyle={{ 'color': 'black' }}
                                             contentStyle={{ 'opacity': '0.8' }} />
-                                        <Bar dataKey="power" fill="grey" animationDuration={1500} />
+                                        <Bar dataKey="power" fill="grey" />
                                     </BarChart>
                                 </td>
                             </tr>
@@ -300,13 +273,13 @@ class Insights extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <img src={solar} height="50px"/>
+                                    <img src={solar} height="50px" />
                                 </td>
                                 <td>
                                     Solar Power Complex
                                 </td>
                                 <td>
-                                    <img src={smarthub} height="50px"/>
+                                    <img src={smarthub} height="50px" />
                                 </td>
                                 <td>
                                     Smart Hub
@@ -314,13 +287,13 @@ class Insights extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <img src={wind} height="50px"/>
+                                    <img src={wind} height="50px" />
                                 </td>
                                 <td>
                                     Wind Farm
                                 </td>
                                 <td>
-                                    <img src={smartshelter} height="50px"/>
+                                    <img src={smartshelter} height="50px" />
                                 </td>
                                 <td>
                                     Smart Shelter
@@ -328,10 +301,10 @@ class Insights extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <img src={drt} height="50px"/>
+                                    <img src={drt} height="50px" />
                                 </td>
                                 <td>
-                                    Demand Responsive <br/> Shuttle Bus
+                                    Demand Responsive <br /> Shuttle Bus
                                 </td>
                             </tr>
                         </table>
