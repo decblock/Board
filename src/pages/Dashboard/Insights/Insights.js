@@ -227,7 +227,7 @@ class Insights extends Component {
                                         <ul>
                                             {this.state.hoveritem.details.map((detail) => {
                                                 return (
-                                                    <li>
+                                                    <li style={{'fontSize':'10px'}}>
                                                         {detail}
                                                     </li>
                                                 );

@@ -15,6 +15,7 @@
     border-bottom: 1px solid black;
     width: 200px;
     word-wrap: break-word;
+    font-size: 12px;
 }
 
 .details {
