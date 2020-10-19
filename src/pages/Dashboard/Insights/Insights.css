@@ -1,0 +1,23 @@
+.InsightsMain {
+    /* height: 100%; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #2b2a2a;
+}
+
+.popupMain {
+}
+
+.title {
+    border-bottom: 1px solid black;
+    width: 200px;
+    word-wrap: break-word;
+}
+
+.details {
+    width: 200px;
+    word-wrap: break-word;
+}
