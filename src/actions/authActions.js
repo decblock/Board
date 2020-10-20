@@ -84,6 +84,41 @@ export const login = (user) => (dispatch) => {
 }
 
 
+// LOGIN USER
+export const ssosignin = () => (dispatch) => {
+  const config = {
+    headers: {
+      "Content-type": "application/json",
+    },
+  };
+  config.headers["x-auth-token"] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9." +
+    "eyJuYW1lIjoiS2ltIEdvLWV1biIsImVtYWlsIjoiZ2dvbmVraW1AZ21haWwuY29tIiwiU1NOIjoxMjM0NTYxMjM0NTY3fQ." +
+    "6ax4I7ljBRv7NHwM89L7iTOveAHmEOPcElIfCvdbTY4";
+
+  axios.get("/singlesignon", config)
+    .then((response) => {
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: response.data,
+      })
+    })
+    .catch((err) => {
+      if (!err.response) {
+        alert(err);
+      }
+      else {
+        alert(err.response.data)
+      }
+      // dispatch(returnErrors(err.response.data, err.response.status, "LOGIN_FAIL"));
+      dispatch({
+        type: LOGIN_FAIL,
+      })
+    });
+}
+
+
+
+
 // LOGOUT USER
 export const logout = () => {
   return {

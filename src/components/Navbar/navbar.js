@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 // REDUX IMPORTS
 import { connect } from 'react-redux';
 import { store } from '../../store';
+import { ssosignin } from '../../actions/authActions';
 // STYLESHEET
 import './navbar.css'
 // BANNER IMPORT
@@ -23,6 +24,14 @@ class Navbar extends Component {
                 </h1>
                 <div className="navDiv">
                     <ul className="ulElement">
+                        {!this.props.isAuthenticated
+                            ? <li className="liElement" onClick={() => { this.props.ssosignin() }}>
+                                <div className="divElement">
+                                    SSO Sign-In
+                                </div>
+                            </li>
+                            : null
+                        }
                         <Link to="/" className="linkElement">
                             <li className="liElement">
                                 <div className="divElement">
@@ -53,12 +62,12 @@ class Navbar extends Component {
                                 </li>
                             </Link>
                             :
-                            <Link to="/" className="linkElement" onClick={()=>{store.dispatch({ type: "LOGOUT_SUCCESS" })}}>
-                            <li className="liElement">
-                                <div className="divElement">
-                                    Logout
+                            <Link to="/" className="linkElement" onClick={() => { store.dispatch({ type: "LOGOUT_SUCCESS" }) }}>
+                                <li className="liElement">
+                                    <div className="divElement">
+                                        {this.props.user.name} - Logout
                                     </div>
-                            </li>
+                                </li>
                             </Link>
                         }
                     </ul>
@@ -71,7 +80,8 @@ class Navbar extends Component {
 function mapStateToProps(state) {
     return ({
         isAuthenticated: state.auth.isAuthenticated,
+        user: state.auth.user
     })
 }
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, { ssosignin })(Navbar);
