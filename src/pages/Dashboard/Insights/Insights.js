@@ -192,7 +192,7 @@ class Insights extends Component {
                     </div>
                     <ReactMapGL
                         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-                        mapStyle="mapbox://styles/akashsingh3/ckgg9xwo0e3hu1as44hohx983"
+                        mapStyle="mapbox://styles/dbsmartcity/ckghil50y0s1f19qwozst4mwa"
                         {...this.state.viewport}
                         onViewportChange={(viewport) => this.setState({ viewport })}
                     >
