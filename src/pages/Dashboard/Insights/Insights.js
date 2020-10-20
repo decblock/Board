@@ -141,7 +141,7 @@ class Insights extends Component {
                     <div className='keyInsights'>
                         <table>
                             <tr>
-                                <th>Monthly surplus power reduction rate</th>
+                                <th>월간 잉여 전력 감소율</th>
                             </tr>
                             <tr>
                                 <td>
@@ -161,31 +161,31 @@ class Insights extends Component {
                         </table>
                         <table>
                             <tr>
-                                <th>Total Power generation: </th>
+                                <th>총 발전량: </th>
                                 <td>{this.state.keyinsights.total_power_generation}</td>
                             </tr>
                             <tr>
-                                <th>CO2 Reduction: </th>
+                                <th>CO2 감소량: </th>
                                 <td>{this.state.keyinsights.co2_reduction}</td>
                             </tr>
                             <tr>
-                                <th>Reduction rate from previous year: </th>
+                                <th>잉여전력 전년대비 감소율: </th>
                                 <td>{this.state.keyinsights.reduction_power_rate_previous_year}</td>
                             </tr>
                             <tr>
-                                <th>2019 surplus: </th>
+                                <th>2019년 잉여전력 :  </th>
                                 <td>{this.state.keyinsights.power_surplus_2019}</td>
                             </tr>
                             <tr>
-                                <th>2020 surplus: </th>
+                                <th>2020년 잉여전력:  </th>
                                 <td>{this.state.keyinsights.power_surplus_2020}</td>
                             </tr>
                             <tr>
-                                <th>E-Mobility Users: </th>
+                                <th>e-모빌리티 이용자 수:  </th>
                                 <td>{this.state.keyinsights.emobility_user}</td>
                             </tr>
                             <tr>
-                                <th>Renewable Energy Consumption: </th>
+                                <th>신재생에너지 사용량: </th>
                                 <td>{this.state.keyinsights.renewable_enery_consuption}</td>
                             </tr>
                         </table>
@@ -269,20 +269,20 @@ class Insights extends Component {
                     <div className='legendMain'>
                         <table>
                             <tr>
-                                <th colSpan='4'> <center>LEGEND</center></th>
+                                <th colSpan='4'> <center>범례</center></th>
                             </tr>
                             <tr>
                                 <td>
                                     <img src={solar} height="50px" />
                                 </td>
                                 <td>
-                                    Solar Power Complex
+                                     태양광 발전단지
                                 </td>
                                 <td>
                                     <img src={smarthub} height="50px" />
                                 </td>
                                 <td>
-                                    Smart Hub
+                                    스마트허브
                                 </td>
                             </tr>
                             <tr>
@@ -290,13 +290,13 @@ class Insights extends Component {
                                     <img src={wind} height="50px" />
                                 </td>
                                 <td>
-                                    Wind Farm
+                                    풍력 발전단지
                                 </td>
                                 <td>
                                     <img src={smartshelter} height="50px" />
                                 </td>
                                 <td>
-                                    Smart Shelter
+                                    스마트쉘터
                                 </td>
                             </tr>
                             <tr>
@@ -304,7 +304,7 @@ class Insights extends Component {
                                     <img src={drt} height="50px" />
                                 </td>
                                 <td>
-                                    Demand Responsive <br /> Shuttle Bus
+                                    수요응답형 <br /> 셔틀버스
                                 </td>
                             </tr>
                         </table>

@@ -184,7 +184,7 @@ class Renewable extends Component {
             <div className="renewableMain">
                 <center>
                     <h1>
-                        Renewable Energy Dashboard
+                        신재생에너지 대시보드
                     </h1>
                 </center>
                 <FormControl component="fieldset">
@@ -197,16 +197,16 @@ class Renewable extends Component {
                 <table className='detailsTable'>
                     <tr>
                         <th>
-                            Cumulative Power <br /> generation
+                            누적발전량 <br /> 
                         </th>
                         <th>
-                            Facility Capacity
+                            설비용량
                         </th>
                         <th>
-                            CO2 Reduction
+                            CO2 저감량
                         </th>
                         <th>
-                            Drinking Water Effect
+                            식수효과
                         </th>
                     </tr>
                     <tr>
@@ -220,20 +220,20 @@ class Renewable extends Component {
                             {this.state.co2_reduction} tCO2
                         </td>
                         <td>
-                            {this.state.drinking_water_effect} trees
+                            {this.state.drinking_water_effect} 그루
                         </td>
                     </tr>
                 </table>
                 <table className='chartTable'>
                     <tr>
                         <th>
-                            Current Output (MW)
+                            현재출력 (MW)
                         </th>
                         <th>
-                            Weekly Power Generation (kwh)
+                            주간 발전량(kwh)
                         </th>
                         <th>
-                            Monthly Power generation (kwh)
+                            월간발전량 (kwh)
                         </th>
                     </tr>
                     <tr>

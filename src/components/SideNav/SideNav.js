@@ -20,23 +20,23 @@ class SideNav extends Component {
                     <MenuItem icon={<FontAwesomeIcon icon={faLightbulb} size='2x' />}>
                         <Link to='/dashboard/insights'>
 
-                            Insights
+                            인사이트
                         </Link>
                     </MenuItem>
                     <MenuItem icon={<FontAwesomeIcon icon={faChartPie} size='2x' />}>
                         <Link to='/dashboard/integrated'>
 
-                            Integrated Dashboard
+                            통합 데시보드
                         </Link>
                     </MenuItem>
                     <MenuItem icon={<FontAwesomeIcon icon={faLeaf} size='2x' />}>
                         <Link to='/dashboard/renewable'>
-                            Renewable Energy
+                            신재생에너지
                         </Link>
                     </MenuItem>
                     <MenuItem icon={<FontAwesomeIcon icon={faBolt} size='2x' />}>
                         <Link to='/dashboard/emobility'>
-                            E-Mobility
+                            E-모빌리티
                         </Link>
                     </MenuItem>
                 </Menu>

@@ -60,21 +60,21 @@ class Integrated extends Component {
             <div className='integratedMain'>
                 <center>
                     <h1>
-                        e-3DA Integrated Dashboard
+                        e-3DA 통합 대시보드
                     </h1>
                 </center>
                 <div className='dataTables'>
                     <table className='renewableTable'>
                         <tr>
-                            <th colSpan='2'>Renewable Energy</th>
+                            <th colSpan='2'>신재생에너지</th>
                         </tr>
                         {/* 1st SECTION */}
                         <tr>
                             <th>
-                                Cummulative Power Generation
+                                누적 발전량(풍력/태양광)
                             </th>
                             <th>
-                                Total Facility Capacity
+                                총 설비 용량(풍량/태양광)
                             </th>
                         </tr>
                         <tr>
@@ -88,10 +88,10 @@ class Integrated extends Component {
                         {/* 2nd SECTION */}
                         <tr>
                             <th>
-                                CO2 Reduction<br />(Wind and Solar)
+                                CO2 저감량<br />(풍량/태양광)
                             </th>
                             <th>
-                                Drinking Water Effect<br />(Wind and Solar)
+                                식수효과<br />(풍량/태양광) 
                             </th>
                         </tr>
                         <tr>
@@ -99,16 +99,16 @@ class Integrated extends Component {
                                 {this.state.renewable.co2_reduction} tCO2
                             </td>
                             <td>
-                                {this.state.renewable.drinking_water_effect} trees
+                                {this.state.renewable.drinking_water_effect} 그루
                             </td>
                         </tr>
                         {/* 3rd SECTION */}
                         <tr>
                             <th>
-                                Number of chargers installed <br /> (EV charger)
+                                충전기 설치 수 <br /> (EV 충전기)
                             </th>
                             <th>
-                                Electricity Storage System<br />(ESS)
+                                전기 추출량<br />(ESS)    
                             </th>
                         </tr>
                         <tr>
@@ -125,29 +125,29 @@ class Integrated extends Component {
                         <table className='summaryTable'>
                             <tr>
                                 <th colSpan='3'>
-                                    Summary
+                                    요약현향
                                 </th>
                             </tr>
                             <tr>
                                 <th>
-                                    Members
+                                     회원수 
                                 </th>
                                 <th>
-                                    Commulative number <br /> of boarding
+                                    누적 탑승 횟수
                                 </th>
                                 <th>
-                                    Number of shared EV's
+                                    전기차 공유 대수
                                 </th>
                             </tr>
                             <tr>
                                 <td>
-                                    {this.state.emobility.members} people
+                                    {this.state.emobility.members} 명
                                 </td>
                                 <td>
-                                    {this.state.emobility.cumulative_ride} times
+                                    {this.state.emobility.cumulative_ride} 회
                                 </td>
                                 <td>
-                                    {this.state.emobility.electric_vehical_shared} units
+                                    {this.state.emobility.electric_vehical_shared} 대
                                 </td>
 
                             </tr>
@@ -155,21 +155,21 @@ class Integrated extends Component {
                         <table className='availabilityTable'>
                             <tr>
                                 <th colSpan='3'>
-                                    Availability
+                                    가용현황
                                 </th>
                             </tr>
                             <tr>
                                 <th></th>
                                 <th>
-                                    Electric Car
+                                    전기차
                                 </th>
                                 <th>
-                                    Electric Kickboard
+                                    전동킥보드
                                 </th>
                             </tr>
                             <tr>
                                 <td>
-                                    Available
+                                    가용
                                 </td>
                                 <td>
                                     {this.state.emobility.ecar_available}
@@ -180,7 +180,7 @@ class Integrated extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    Unusable
+                                    비가용
                                 </td>
                                 <td>
                                     {this.state.emobility.ecar_unusable}
@@ -191,7 +191,7 @@ class Integrated extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    Charging
+                                    충전중
                                 </td>
                                 <td>
                                     {this.state.emobility.ecar_charging}
@@ -202,7 +202,7 @@ class Integrated extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    Total
+                                    전체
                                 </td>
                                 <td>
                                     {this.state.emobility.ecar_total}

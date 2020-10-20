@@ -26,10 +26,10 @@ class Register extends Component {
     return (
       <div className="RegisterFULL">
         <form onSubmit={this.handleSubmit}>
-          <center><h2>REGISTER</h2></center>
+          <center><h2>회원가입</h2></center>
           <table>
             <tr>
-              <td>NAME:</td>
+              <td>이름:</td>
               <td>
                 <input type="text" name="name" id="name" />
               </td>
@@ -47,14 +47,14 @@ class Register extends Component {
               </td>
             </tr>
             <tr>
-              <td>SSN:</td>
+              <td>주민번호:</td>
               <td>
                 <input type="number" name="SSN" id="SSN" />
               </td>
             </tr>
             <tr>
               <td colSpan="2" style={{ "text-align": "center" }}>
-                <input type="submit" value="REGISTER" className="registerBttn" />
+                <input type="submit" value="회원가입" className="registerBttn" />
               </td>
             </tr>
           </table>

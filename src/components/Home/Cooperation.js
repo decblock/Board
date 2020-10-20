@@ -32,7 +32,7 @@ class Cooperation extends Component {
         return (
             <div className='coopMain'>
                 <div className='coopIn'>
-                    Cooperating Institutes
+                    참여기관
                     <hr />
                     <div className='coopMapDiv'>
                         {this.data.map((item) => {
