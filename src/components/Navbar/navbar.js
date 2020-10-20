@@ -26,14 +26,14 @@ class Navbar extends Component {
                         <Link to="/" className="linkElement">
                             <li className="liElement">
                                 <div className="divElement">
-                                    Home
+                                    메인
                                 </div>
                             </li>
                         </Link>
                         <Link to="/" className="linkElement">
                             <li className="liElement">
                                 <div className="divElement">
-                                    Introduction
+                                    소개
                                 </div>
                             </li>
                         </Link>
@@ -48,7 +48,7 @@ class Navbar extends Component {
                             ? <Link to="/auth" className="linkElement">
                                 <li className="liElement">
                                     <div className="divElement">
-                                        Login/Register
+                                     로그인/회원가입
                                 </div>
                                 </li>
                             </Link>
@@ -56,7 +56,7 @@ class Navbar extends Component {
                             <Link to="/" className="linkElement" onClick={()=>{store.dispatch({ type: "LOGOUT_SUCCESS" })}}>
                             <li className="liElement">
                                 <div className="divElement">
-                                    Logout
+                                    로그아웃
                                     </div>
                             </li>
                             </Link>

@@ -16,17 +16,17 @@ class RelatedNews extends Component {
     data = [
         {
             img: News1,
-            title: "Renewable energy and e-mobility ​Solving Jeju transportation and energy problems",
+            title: "신재생에너지, e-모빌리티 연계해​ 제주 교통, 에너지 문제 해결",
             date: "10/08/2020"
         },
         {
             img: News2,
-            title: "Smart City Challenge business in earnest e-3DA Future City Construction",
+            title: "스마트시티 챌린지 사업 본격화 e-3DA 미래도시 구축",
             date: "24/08/2020"
         },
         {
             img: News3,
-            title: "Jeju Island. 2020 Smart City Selected as a challenge project",
+            title: "제주도. 2020 스마트시티챌린지 사업 선정",
             date: "28/05/2020"
         },
     ]
@@ -35,7 +35,7 @@ class RelatedNews extends Component {
         return (
             <div className='newsMainDiv'>
                 <div className='NINDiv'>
-                    Related News
+                    관련소식
                     <hr />
                     <div className='rnDiv'>
                         {this.data.map((item) => {

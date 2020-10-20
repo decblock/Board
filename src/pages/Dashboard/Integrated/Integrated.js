@@ -7,6 +7,10 @@ import './Integrated.css'
 // AXIOS IMPORTS
 import axios from 'axios'
 
+import { Card, Button, Grid } from "tabler-react";
+
+import "tabler-react/dist/Tabler.css";
+
 class Integrated extends Component {
 
     constructor(props) {
@@ -60,64 +64,86 @@ class Integrated extends Component {
             <div className='integratedMain'>
                 <center>
                     <h1>
-                        e-3DA Integrated Dashboard
+                        e-3DA 통합 대시보드
                     </h1>
                 </center>
                 <div className='dataTables'>
                     <table className='renewableTable'>
+                    
                         <tr>
-                            <th colSpan='2'>Renewable Energy</th>
+                            <th colSpan='2'>신재생에너지</th>
                         </tr>
                         {/* 1st SECTION */}
                         <tr>
                             <th>
-                                Cummulative Power Generation
+                            <Card statusColor="orange">
+                                <Card.Header>
+                                    <Card.Title>
+                                        누적 발전량(풍력/태양광)
+                                    </Card.Title>
+                                </Card.Header>
+                                <Card.Body>
+                                 {this.state.renewable.cumulative_power_generation} MWh
+                                </Card.Body>
+                            </Card>
                             </th>
                             <th>
-                                Total Facility Capacity
+                            <Card statusColor="orange">
+                                <Card.Header>
+                                    <Card.Title>총 설비 용량(풍량/태양광)</Card.Title>
+                                </Card.Header>
+                                <Card.Body>
+                                    {this.state.renewable.total_facility_capacity} MW
+                                </Card.Body>
+                            </Card>
                             </th>
                         </tr>
-                        <tr>
-                            <td>
-                                {this.state.renewable.cumulative_power_generation} MWh
-                            </td>
-                            <td>
-                                {this.state.renewable.total_facility_capacity} MW
-                            </td>
-                        </tr>
-                        {/* 2nd SECTION */}
+                
                         <tr>
                             <th>
-                                CO2 Reduction<br />(Wind and Solar)
+                                <Card statusColor="orange">
+                                    <Card.Header>
+                                        <Card.Title>CO2 저감량<br />(풍량/태양광)</Card.Title>
+                                </Card.Header>
+                                    <Card.Body>
+                                     {this.state.renewable.co2_reduction} tCO2
+                                    </Card.Body>
+                                </Card>
                             </th>
                             <th>
-                                Drinking Water Effect<br />(Wind and Solar)
+                                <Card statusColor="orange">
+                                    <Card.Header>
+                                        <Card.Title>식수효과<br />(풍량/태양광)</Card.Title>
+                                </Card.Header>
+                                    <Card.Body>
+                                    {this.state.renewable.drinking_water_effect} trees
+                                    </Card.Body>
+                                </Card>
                             </th>
                         </tr>
-                        <tr>
-                            <td>
-                                {this.state.renewable.co2_reduction} tCO2
-                            </td>
-                            <td>
-                                {this.state.renewable.drinking_water_effect} trees
-                            </td>
-                        </tr>
+                        
                         {/* 3rd SECTION */}
                         <tr>
                             <th>
-                                Number of chargers installed <br /> (EV charger)
+                                <Card statusColor="orange">
+                                    <Card.Header>
+                                        <Card.Title>충전기 설치 수 <br /> (EV 충전기)</Card.Title>
+                                </Card.Header>
+                                    <Card.Body>
+                                    {this.state.renewable.number_of_chargers_installed}
+                                    </Card.Body>
+                                </Card>
                             </th>
                             <th>
-                                Electricity Storage System<br />(ESS)
+                                <Card statusColor="orange">
+                                    <Card.Header>
+                                        <Card.Title>전기 추출량<br />(ESS)</Card.Title>
+                                </Card.Header>
+                                    <Card.Body>
+                                    {this.state.renewable.electricity_extraction_volume} KW
+                                    </Card.Body>
+                                </Card>
                             </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                {this.state.renewable.number_of_chargers_installed}
-                            </td>
-                            <td>
-                                {this.state.renewable.electricity_extraction_volume} KW
-                            </td>
                         </tr>
                     </table>
                     <div style={{ 'width': '3px', 'backgroundColor': 'white', 'height': '100%' }} />
@@ -125,51 +151,74 @@ class Integrated extends Component {
                         <table className='summaryTable'>
                             <tr>
                                 <th colSpan='3'>
-                                    Summary
+                                    요약현향
                                 </th>
                             </tr>
                             <tr>
                                 <th>
-                                    Members
+                                <Card statusColor="orange">
+                                    <Card.Header>
+                                        <Card.Title>회원수</Card.Title>
+                                    </Card.Header>
+                                    <Card.Body>
+                                    {this.state.emobility.members} 명
+                                    </Card.Body>
+                                </Card>
+                                    
                                 </th>
                                 <th>
-                                    Commulative number <br /> of boarding
+                                <Card statusColor="orange">
+                                    <Card.Header>
+                                        <Card.Title>누적 탑승 횟수</Card.Title>
+                                    </Card.Header>
+                                    <Card.Body>
+                                    {this.state.emobility.cumulative_ride} 회
+                                    </Card.Body>
+                                </Card>
                                 </th>
                                 <th>
-                                    Number of shared EV's
+                                <Card statusColor="orange">
+                                    <Card.Header>
+                                        <Card.Title>전기차 공유 대수</Card.Title>
+                                    </Card.Header>
+                                    <Card.Body>
+                                    {this.state.emobility.electric_vehical_shared} 대
+                                    </Card.Body>
+                                </Card>
+                                    
                                 </th>
                             </tr>
-                            <tr>
+                            {/* <tr>
                                 <td>
-                                    {this.state.emobility.members} people
+                                    {this.state.emobility.members} 명
                                 </td>
                                 <td>
-                                    {this.state.emobility.cumulative_ride} times
+                                    {this.state.emobility.cumulative_ride} 회
                                 </td>
                                 <td>
-                                    {this.state.emobility.electric_vehical_shared} units
+                                    {this.state.emobility.electric_vehical_shared} 대
                                 </td>
 
-                            </tr>
+                            </tr> */}
                         </table>
                         <table className='availabilityTable'>
                             <tr>
                                 <th colSpan='3'>
-                                    Availability
+                                    가용현황
                                 </th>
                             </tr>
                             <tr>
                                 <th></th>
                                 <th>
-                                    Electric Car
+                                    전기차
                                 </th>
                                 <th>
-                                    Electric Kickboard
+                                    전동킥보드
                                 </th>
                             </tr>
                             <tr>
                                 <td>
-                                    Available
+                                    가용
                                 </td>
                                 <td>
                                     {this.state.emobility.ecar_available}
@@ -180,7 +229,7 @@ class Integrated extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    Unusable
+                                    비가용
                                 </td>
                                 <td>
                                     {this.state.emobility.ecar_unusable}
@@ -191,7 +240,7 @@ class Integrated extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    Charging
+                                    충전중
                                 </td>
                                 <td>
                                     {this.state.emobility.ecar_charging}
@@ -202,7 +251,7 @@ class Integrated extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    Total
+                                    전체
                                 </td>
                                 <td>
                                     {this.state.emobility.ecar_total}

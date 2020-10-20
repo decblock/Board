@@ -46,11 +46,11 @@ class Emobility extends Component {
         let temp = 100 - this.state.traffic_sharing_rate
         let data = [
             {
-                name: 'E-Mobility',
+                name: 'E-모빌리티',
                 value: this.state.traffic_sharing_rate
             },
             {
-                name: 'Total Traffic',
+                name: '전체통행량',
                 value: temp
             },
         ]
@@ -60,10 +60,6 @@ class Emobility extends Component {
     getMData = () => {
         let data = [
             {
-                name: 'Twizy',
-                members: this.state.twizy
-            },
-            {
                 name: 'Greego',
                 members: this.state.greego
             },
@@ -72,15 +68,19 @@ class Emobility extends Component {
                 members: this.state.drt
             },
             {
-                name: 'Macaron',
+                name: '마카롱택시',
                 members: this.state.un1
+            },
+            {
+                name: 'Twizy',
+                members: this.state.twizy
             },
             {
                 name: 'EVPass',
                 members: this.state.un2
             },
             {
-                name: 'Green Car',
+                name: '그린카',
                 members: this.state.un3
             },
         ]
@@ -93,19 +93,19 @@ class Emobility extends Component {
             <div className="emobMain">
                 <center>
                     <h1>
-                        E-Mobility Dashboard
+                        E-Mobility 대시보드
                     </h1>
                 </center>
                 <table className='chartTable'>
                     <tr>
                         <th>
-                            Toll Share Rate
+                            통행 분담률
                         </th>
                         <th>
-                            Weekly Power Generation (kwh)
+                            서비스 별 회원수
                         </th>
                         <th>
-                            Other Details
+                            기타 현황
                         </th>
                     </tr>
                     <tr>
@@ -144,7 +144,7 @@ class Emobility extends Component {
                     </tr>
                     <tr>
                         <th>
-                            Cummulative Number of Rides
+                            누적 탑승횟수
                         </th>
                     </tr>
                     <tr>
@@ -154,7 +154,7 @@ class Emobility extends Component {
                     </tr>
                     <tr>
                         <th>
-                            EV Shared Number
+                            전기차 공유대수
                         </th>
                     </tr>
                     <tr>
@@ -164,7 +164,7 @@ class Emobility extends Component {
                     </tr>
                     <tr>
                         <th>
-                            Parking Area Reduction
+                            주차 면 감축효과
                         </th>
                     </tr>
                     <tr>
@@ -174,7 +174,7 @@ class Emobility extends Component {
                     </tr>
                     <tr>
                         <th>
-                            Renewable Energy Consumption
+                            신재생에너지 사용량
                         </th>
                     </tr>
                     <tr>

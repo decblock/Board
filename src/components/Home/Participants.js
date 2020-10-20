@@ -60,7 +60,7 @@ class Participants extends Component {
         return (
             <div className='partMain'>
                 <div className='partIn'>
-                    Participating Institutes
+                    참여기관
                     <hr />
                     <div className='mapDiv'>
                         {this.data.map((item) => {

@@ -59,9 +59,9 @@ class HomePage extends Component {
                             })}
                         </div>
                         <div className='titleDiv'>
-                            <h1>Carbon Zero Jeju e-3DA</h1>
+                            <h1>탄소제로 Jeju e-3DA</h1>
                             <br />
-                            Jeju Smart City Challenge
+                            제주 스마트시티 챌린지
                         </div>
                     </div>
                 </div>
